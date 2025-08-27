@@ -1,9 +1,12 @@
-#from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request
 import csv, os
 from datetime import datetime
 
-#app = Flask(__name__)
-#app.secret_key = "super-secret-key"
+app = Flask(__name__)
+app.secret_key = "super-secret-key"
+
+UPI_ID = "ecommerit@airtel"
+PAYEE_NAME = "Ecommerit"
 
 @app.route("/", methods=["GET","POST"])
 def payment():
@@ -23,7 +26,7 @@ def payment():
                 writer.writerow(["timestamp","name","amount","utr","note"])
             writer.writerow([datetime.now().isoformat(), name, amount, utr, note])
         message = "✅ Payment details submitted. We'll verify soon."
-    return render_template("payment.html", message=message)
+    return render_template("payment.html", message=message, upi_id=UPI_ID, payee=PAYEE_NAME)
 
 if __name__ == "__main__":
     app.run(debug=True)
