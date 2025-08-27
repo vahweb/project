@@ -1,8 +1,6 @@
 <?php
-// Ensure a file exists to store submissions
 $file = __DIR__ . "/payments.csv";
 
-// When form is submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name   = trim($_POST["name"] ?? "");
     $amount = trim($_POST["amount"] ?? "");
@@ -37,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
   <div class="card">
     <h2>UPI Payment — Ecommerit</h2>
-    <p>UPI ID: <strong>nidakhan@upi</strong></p>
-    <img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=upi://pay?pa=nidakhan@upi&pn=Ecommerit&cu=INR" alt="UPI QR">
+    <p>UPI ID: <strong>ecommerit@airtel</strong></p>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=ecommerit@airtel&pn=Ecommerit&cu=INR" alt="UPI QR">
     <?php if (!empty($message)) echo "<div class='msg'>$message</div>"; ?>
     <h3>Submit Payment Details</h3>
     <form method="post">
